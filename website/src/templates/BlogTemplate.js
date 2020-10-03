@@ -2,11 +2,11 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 
-export default function DocTemplate({ data }) {
-  const doc = data.markdownRemark;
+export default function BlogTemplate({ data }) {
+  const blog = data.markdownRemark;
   return (
     <Layout>
-      <div dangerouslySetInnerHTML={{ __html: doc.html }}></div>
+      <div dangerouslySetInnerHTML={{ __html: blog.html }}></div>
     </Layout>
   );
 }
