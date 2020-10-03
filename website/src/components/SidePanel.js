@@ -19,11 +19,9 @@ export default function SidePanel({ location }) {
 }
 
 function SidePanelSection({ doc, location }) {
-  let initialState;
-  if (location.pathname.includes(doc.id)) {
+  let initialState = false;
+  if (location && location.pathname.includes(doc.id)) {
     initialState = true;
-  } else {
-    initialState = false;
   }
   const [isExpanded, setIsExpanded] = useState(initialState);
 
