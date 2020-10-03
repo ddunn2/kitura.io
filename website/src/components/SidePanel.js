@@ -4,7 +4,7 @@ import data from "../../content/learn/docs-list.yaml";
 
 export default function SidePanel({ location }) {
   return (
-    <aside>
+    <aside className="sidepanel">
       {data.map((doc, index) => {
         return (
           <SidePanelSection
@@ -26,15 +26,27 @@ function SidePanelSection({ doc, location }) {
   const [isExpanded, setIsExpanded] = useState(initialState);
 
   return (
-    <section>
-      <h2 onClick={() => setIsExpanded(!isExpanded)}>{doc.title}</h2>
+    <section className="sidepanel--section">
+      <h2
+        className="sidepanel--section_title"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        {doc.title}
+      </h2>
       <ul
         style={{ overflow: "hidden", height: isExpanded ? "min-content" : 0 }}
       >
         {doc.items.map((docItem, index) => {
           return (
-            <li key={`${docItem.title}-${index}`}>
-              <Link state={{ isExpanded: isExpanded }} to={docItem.link}>
+            <li
+              className="sidepanel--section_list_item"
+              key={`${docItem.title}-${index}`}
+            >
+              <Link
+                className="sidepanel--section_link"
+                state={{ isExpanded: isExpanded }}
+                to={docItem.link}
+              >
                 {docItem.title}
               </Link>
             </li>

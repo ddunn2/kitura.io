@@ -7,8 +7,13 @@ export default function DocTemplate({ data, location }) {
   const doc = data.markdownRemark;
   return (
     <Layout>
-      <SidePanel location={location} />
-      <div dangerouslySetInnerHTML={{ __html: doc.html }}></div>
+      <section className="doc--container">
+        <SidePanel location={location} />
+        <div
+          className="doc--content"
+          dangerouslySetInnerHTML={{ __html: doc.html }}
+        ></div>
+      </section>
     </Layout>
   );
 }
