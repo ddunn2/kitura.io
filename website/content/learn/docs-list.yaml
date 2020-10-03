@@ -59,7 +59,7 @@
     - title: OAuth 2.0 with Google/Facebook
       link: /docs/authentication/oauth2
 - title: Web Applications
-  id: web-applications
+  id: web
   items:
     - title: What is Templating?
       link: /docs/web/what-is-templating

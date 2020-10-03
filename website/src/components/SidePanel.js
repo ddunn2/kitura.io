@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import data from "../../content/learn/docs-list.yaml";
 
-export default function SidePanel() {
+export default function SidePanel({ location }) {
   return (
     <aside>
       {data.map((doc, index) => {
         return (
           <SidePanelSection
             key={`${doc.title}-${index}`}
-            title={doc.title}
-            docItems={doc.items}
+            doc={doc}
+            location={location}
           />
         );
       })}
@@ -18,19 +18,27 @@ export default function SidePanel() {
   );
 }
 
-function SidePanelSection({ title, docItems }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+function SidePanelSection({ doc, location }) {
+  let initialState;
+  if (location.pathname.includes(doc.id)) {
+    initialState = true;
+  } else {
+    initialState = false;
+  }
+  const [isExpanded, setIsExpanded] = useState(initialState);
 
   return (
     <section>
-      <h2 onClick={() => setIsExpanded(!isExpanded)}>{title}</h2>
+      <h2 onClick={() => setIsExpanded(!isExpanded)}>{doc.title}</h2>
       <ul
         style={{ overflow: "hidden", height: isExpanded ? "min-content" : 0 }}
       >
-        {docItems.map((docItem, index) => {
+        {doc.items.map((docItem, index) => {
           return (
             <li key={`${docItem.title}-${index}`}>
-              <Link to={docItem.link}>{docItem.title}</Link>
+              <Link state={{ isExpanded: isExpanded }} to={docItem.link}>
+                {docItem.title}
+              </Link>
             </li>
           );
         })}

@@ -3,11 +3,11 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import SidePanel from "../components/SidePanel";
 
-export default function DocTemplate({ data }) {
+export default function DocTemplate({ data, location }) {
   const doc = data.markdownRemark;
   return (
     <Layout>
-      <SidePanel />
+      <SidePanel location={location} />
       <div dangerouslySetInnerHTML={{ __html: doc.html }}></div>
     </Layout>
   );
