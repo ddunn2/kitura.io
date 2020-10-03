@@ -38,14 +38,19 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    let tempalatePath;
     if (node.fields.collection === `doc`) {
-      createPage({
-        path: node.fields.slug,
-        component: path.resolve(`./src/templates/DocTemplate.js`),
-        context: {
-          slug: node.fields.slug,
-        },
-      });
+      tempalatePath = `./src/templates/DocTemplate.js`;
+    } else if (node.fields.collection === `blog`) {
+      tempalatePath = `./src/templates/BlogTemplate.js`;
     }
+
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(tempalatePath),
+      context: {
+        slug: node.fields.slug,
+      },
+    });
   });
 };
