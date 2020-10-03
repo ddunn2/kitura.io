@@ -44,9 +44,9 @@
     - title: What are Sessions?
       link: /docs/sessions/what-are-sessions
     - title: Codable Routing Session
-      link: /docs/sessions/codable-session
+      link: /docs/sessions/codable-sessions
     - title: Raw Routing Session
-      link: /docs/sessions/raw-session
+      link: /docs/sessions/raw-sessions
 - title: Authentication
   id: authentication
   items:
