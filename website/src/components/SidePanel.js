@@ -20,7 +20,7 @@ export default function SidePanel({ location }) {
 
 function SidePanelSection({ doc, location }) {
   let initialState = false;
-  if (location && location.pathname.includes(doc.id)) {
+  if (location && location.pathname.includes(`/${doc.id}/`)) {
     initialState = true;
   }
   const [isExpanded, setIsExpanded] = useState(initialState);
